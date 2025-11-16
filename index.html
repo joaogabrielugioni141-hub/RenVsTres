@@ -104,7 +104,7 @@ async function fetchData() {
       else if (v === "tie") tie++;
     });
 
-    document.getElementById("score").textContent = `${ren} - ${tres}`;
+    document.getElementById("score").textContent = `${ren} - ${zai}`;
     document.getElementById("ties").textContent = `Empates: ${tie}`;
   } catch (err) {
     console.error("Erro ao buscar dados:", err);
@@ -118,4 +118,5 @@ setInterval(fetchData, 10000);
 
 </body>
 </html>
+
 
