@@ -87,6 +87,7 @@ const SHEET_ID = "1DjgKPxUqKNn9ok141uoMwLbyNuJ8wpdJkofmVRhPWmA";
 const RANGE = "P:P"; // Coluna P
 const API_KEY = "AIzaSyAIUhWzBSEcnrj-FqLwEsFRQPECE3EEUaY";
 
+
 async function fetchData() {
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`;
   
@@ -100,11 +101,11 @@ async function fetchData() {
     let ren = 0, tres = 0, tie = 0;
     values.forEach(v => {
       if (v === "ren") ren++;
-      else if (v === "zai") zai++;
+      else if (v === "tres" || v === "zai") tres++;  // 👈 ADICIONADO AQUI
       else if (v === "tie") tie++;
     });
 
-    document.getElementById("score").textContent = `${ren} - ${zai}`;
+    document.getElementById("score").textContent = `${ren} - ${tres}`;
     document.getElementById("ties").textContent = `Empates: ${tie}`;
   } catch (err) {
     console.error("Erro ao buscar dados:", err);
@@ -118,6 +119,3 @@ setInterval(fetchData, 10000);
 
 </body>
 </html>
-
-
-
